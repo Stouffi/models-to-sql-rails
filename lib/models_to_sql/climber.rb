@@ -16,6 +16,7 @@ module ModelsToSql
       baton[:dumped_ids][model.class] << model.id
       
       output << sql(model)
+      return
       STDERR << "LEVEL: #{baton[:level]} Copying #{model.class}:#{model.id}\n" if baton[:debug]
 
       model.class.reflect_on_all_associations.each do |assoc|
